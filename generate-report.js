@@ -29,7 +29,7 @@
     console.info(funkyLogger.color('green', 'Tslint report written to JSON'));
 
     console.info(funkyLogger.color('cyan', 'Reading json file...'));
-    let rawData = fs.readFileSync(config.jsonReport, 'ISO-8859-1');
+    let rawData = fs.readFileSync(config.jsonReport, 'utf8');
     console.info(funkyLogger.color('green', 'File read complete.'));
     let filesCovered = [];
 
@@ -64,10 +64,10 @@
     data.errors = fileListWithErrorCountArray;
 
     console.info(funkyLogger.color('cyan', 'Writing data...'));
-    const template = fs.readFileSync(__dirname + '/html-report-template.html', 'ISO-8859-1');
+    const template = fs.readFileSync(__dirname + '/html-report-template.html', 'utf8');
     const compiledTemplate = handlebars.compile(template, {});
     const html = compiledTemplate(data);
-    fs.writeFileSync(config.finalReport, html, 'ISO-8859-1');
+    fs.writeFileSync(config.finalReport, html, 'utf8');
     console.info(funkyLogger.color('green', 'Data write complete.'));
 
 
