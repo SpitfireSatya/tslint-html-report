@@ -11,6 +11,7 @@
     "url": "git+https://github.com/SpitfireSatya/tslint-html-report.git"
   },
   "keywords": [
+    "tslint-html-report",
     "tslint",
     "html",
     "reporter",
