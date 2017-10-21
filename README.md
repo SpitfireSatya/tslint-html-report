@@ -1,14 +1,9 @@
 
 # tslint-html-report
 A small module which runs TSLint on the given source glob and generates a simple HTML report.
+Works with typescrit version 2.0 and greater.
 
 ## Installation
-
-Make sure you have typescript and tslint installed globally
-
-```bash
-npm install -g typescript tslint
-```
 
 Install tslint-html-report locally and add it to the dev dependancies
 ```bash

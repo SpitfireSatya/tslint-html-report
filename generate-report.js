@@ -7,8 +7,7 @@
   const _ = require('lodash');
   const fs = require('fs');
   const funkyLogger = require('./funky-logger');
-  // const npmRun = require('npm-run');
-  const execSync = require('child_process').exec;
+  const npmRun = require('npm-run');
 
   function generateReport(config) {
     let data = {};
@@ -25,11 +24,12 @@
     }
 
     console.info(funkyLogger.color('cyan', 'Generating TSlint report.'));
-    const result = execSync('tslint' + cliArguments);
+    const result = npmRun.execSync('tslint' + cliArguments, { cwd: __dirname });
+    console.info(result.toString());
     console.info(funkyLogger.color('green', 'Tslint report written to JSON'));
 
     console.info(funkyLogger.color('cyan', 'Reading json file...'));
-    let rawData = JSON.parse(fs.readFileSync(config.jsonReport, 'utf8'));
+    let rawData = fs.readFileSync(config.jsonReport, 'ISO-8859-1');
     console.info(funkyLogger.color('green', 'File read complete.'));
     let filesCovered = [];
 
@@ -64,10 +64,10 @@
     data.errors = fileListWithErrorCountArray;
 
     console.info(funkyLogger.color('cyan', 'Writing data...'));
-    const template = fs.readFileSync(__dirname + '/html-report-template.html', 'utf8');
+    const template = fs.readFileSync(__dirname + '/html-report-template.html', 'ISO-8859-1');
     const compiledTemplate = handlebars.compile(template, {});
     const html = compiledTemplate(data);
-    fs.writeFileSync(config.finalReport, html, 'utf8');
+    fs.writeFileSync(config.finalReport, html, 'ISO-8859-1');
     console.info(funkyLogger.color('green', 'Data write complete.'));
 
 
