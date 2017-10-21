@@ -29,7 +29,7 @@
     console.info(funkyLogger.color('green', 'Tslint report written to JSON'));
 
     console.info(funkyLogger.color('cyan', 'Reading json file...'));
-    let rawData = fs.readFileSync(config.jsonReport, 'utf8');
+    let rawData = JSON.parse(fs.readFileSync(config.jsonReport, 'utf8'));
     console.info(funkyLogger.color('green', 'File read complete.'));
     let filesCovered = [];
 
