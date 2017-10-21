@@ -1,6 +1,6 @@
 {
   "name": "tslint-html-report",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A small module which runs TSLint on the given source glob and generates a simple HTML report.",
   "main": "index.js",
   "scripts": {
