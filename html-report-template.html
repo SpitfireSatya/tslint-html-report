@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>TSLint Report</title>
+    <style>
+        .badge-success {
+            background-color: green;
+        }
+        
+        .badge-error {
+            background-color: red;
+        }
+        .error-div span {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">TSLint Error Report</h1>
+        <p>Total Lint Errors: <span class="badge badge-error">{{total}}</span></p>
+
+        <div class="row error-div">
+            <span class="col-lg-1">No.</span>
+            <span class="col-lg-8">File Path</span>
+            <span class="col-lg-2 col-lg-pull-1 col-lg-offset-1">Count</span>
+        </div>
+
+        {{#each errors as |error|}}
+        <div>
+            <div class="row error-div">
+                <span class="col-lg-1">{{error.index}}</span>
+                <span class="col-lg-8">{{error.name}}</span>
+                <span class="col-lg-2">{{error.count}}</span>
+                <span class="col-lg-1"><button id="button{{error.index}}" onclick="expandTable({{error.index}})">Expand</button></span>
+            </div>
+            <div id="detail{{error.index}}" class="col-lg-12" style="display: none">
+                <table class="table table-hover table-sm table-striped">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th style="width: 7%">No.</th>
+                            <th style="width: 50%">Failure</th>
+                            <th>Rule Name</th>
+                            <th>Start Position</th>
+                            <th>End Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each error.details as |detail| }}
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td>{{detail.failure}}</td>
+                            <td>{{detail.ruleName}}</td>
+                            <td>Line: {{detail.startPosition.line}}, Col: {{detail.startPosition.character}}</td>
+                            <td>Line: {{detail.endPosition.line}}, Col: {{detail.endPosition.character}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{/each}}
+        <div style="position: fixed;right: 10px;bottom: 10px">
+            <button class="btn btn-primary" onclick="scrollToTop()" style="">Scroll top</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    function expandTable(id) {
+        let element = document.getElementById('detail'+id);
+        element.style.display = (element.style.display === 'none') ? 'block' : 'none';
+        document.getElementById('button'+id).textContent = (document.getElementById('button'+id).textContent === 'Expand') ?
+            'Collapse' : 'Expand';
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+
+</script>
+
+</html>

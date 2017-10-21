@@ -1,0 +1,34 @@
+{
+  "name": "tslint-html-report",
+  "version": "1.0.0",
+  "description": "A small module which runs TSLint on the given source glob and generates a simple HTML report.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpitfireSatya/tslint-html-report.git"
+  },
+  "keywords": [
+    "tslint",
+    "html",
+    "reporter",
+    "typescript",
+    "report",
+    "tsc"
+  ],
+  "author": "Spitfire",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpitfireSatya/tslint-html-report/issues"
+  },
+  "homepage": "https://github.com/SpitfireSatya/tslint-html-report#readme",
+  "dependencies": {
+    "handlebars": "^4.0.11",
+    "lodash": "^4.17.4",
+    "npm-run": "^4.1.2",
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3"
+  }
+}
