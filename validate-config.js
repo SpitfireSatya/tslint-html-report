@@ -31,7 +31,9 @@
       outDir: 'reports/tslint-html-report',
       json: 'tslint-report.json',
       html: 'tslint-report.html',
-      breakOnError: false
+      breakOnError: false,
+      tsconfig: undefined,
+      typeCheck: false
     }
 
     if (config) {
@@ -39,12 +41,18 @@
         console.info(funkyLogger.color('yellow', 'info: tslint.json not found, using default config file'));
         config.tslint = defaultConfig.tslint;
       }
+      if (config.typeCheck && !fs.existsSync(__dirname + '/../../' + config.tsconfig)) {
+        console.info(funkyLogger.color('yellow', 'info: tsconfig.json not found, type checking will be disabled'));
+        config.typeCheck = defaultConfig.typeCheck;
+      }
       extendedConfig.tslint = config.tslint || defaultConfig.tslint;
       extendedConfig.srcFiles = config.srcFiles || defaultConfig.srcFiles;
       extendedConfig.outDir = config.outDir || defaultConfig.outDir;
       extendedConfig.json = defaultConfig.json;
       extendedConfig.html = config.html || defaultConfig.html;
       extendedConfig.breakOnError = config.breakOnError;
+      extendedConfig.typeCheck = config.typeCheck;
+      extendedConfig.tsconfig = config.tsconfig;
     } else {
       extendedConfig = defaultConfig;
     }
@@ -52,6 +60,7 @@
     recursiveMkDir(extendedConfig.outDir);
 
     extendedConfig.tslint = path.join(basePath, extendedConfig.tslint);
+    extendedConfig.tsconfig = path.join(basePath, extendedConfig.tsconfig);
     extendedConfig.srcFiles = path.join(basePath, extendedConfig.srcFiles);
     extendedConfig.outDir = path.join(basePath, extendedConfig.outDir);
 
@@ -62,6 +71,10 @@
     console.info('Config used for generation of report: ');
     console.info(funkyLogger.color('cyan', 'Path to tslint.json: '),
       funkyLogger.color('magenta', extendedConfig.tslint));
+    if (extendedConfig.typeCheck) {
+      console.info(funkyLogger.color('cyan', 'Path to tsconfig.json: '),
+        funkyLogger.color('magenta', extendedConfig.tsconfig));
+    }
     console.info(funkyLogger.color('cyan', 'Source files to be linted: '),
       funkyLogger.color('magenta', extendedConfig.srcFiles));
     console.info(funkyLogger.color('cyan', 'Output path for HTML report: '),

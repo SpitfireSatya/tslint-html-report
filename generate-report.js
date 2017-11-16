@@ -19,6 +19,10 @@
       ' --out "' + config.jsonReport + '"' +
       ' "' + config.srcFiles + '"';
 
+    if (config.typeCheck) {
+      cliArguments = cliArguments + ' --project ' + config.tsconfig
+    }
+    
     if (!config.breakOnError) {
       cliArguments = cliArguments + ' --force';
     }
