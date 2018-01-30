@@ -82,7 +82,7 @@
     console.info(funkyLogger.color('yellow', '\nTotal lint issues found: '), funkyLogger.color('red', data.total));
     console.info(funkyLogger.color('green', 'TSLint html report generated and written to file'));
 
-    if (config.breakOnError) {
+    if (config.breakOnError && data.total > 0) {
       process.exit(1);
     }
 
