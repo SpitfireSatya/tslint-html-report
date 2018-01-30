@@ -8,6 +8,9 @@
   const fs = require('fs');
   const funkyLogger = require('./funky-logger');
   const npmRun = require('npm-run');
+  const path = require('path');
+
+  const basePath = path.join(__dirname, '..', '..');
 
   function generateReport(config) {
     let data = {};
@@ -17,14 +20,16 @@
     let cliArguments = ' --config "' + config.tslint + '"' +
       ' --format json' +
       ' --out "' + config.jsonReport + '"' +
-      ' "' + config.srcFiles + '"';
+      ' "' + config.srcFiles + '"' + ' --force';
 
-    if (config.typeCheck) {
-      cliArguments = cliArguments + ' --project ' + config.tsconfig
+    if (config.exclude.length > 0) {
+      config.exclude.forEach(function(excludePath) {
+        cliArguments = cliArguments + ' --exclude "' + path.join(basePath, excludePath) + '"';
+      });
     }
     
-    if (!config.breakOnError) {
-      cliArguments = cliArguments + ' --force';
+    if (config.typeCheck) {
+      cliArguments = cliArguments + ' --project ' + config.tsconfig
     }
 
     console.info(funkyLogger.color('cyan', 'Generating TSlint report.'));
@@ -74,9 +79,12 @@
     fs.writeFileSync(config.finalReport, html, 'utf8');
     console.info(funkyLogger.color('green', 'Data write complete.'));
 
-
     console.info(funkyLogger.color('yellow', '\nTotal lint issues found: '), funkyLogger.color('red', data.total));
     console.info(funkyLogger.color('green', 'TSLint html report generated and written to file'));
+
+    if (config.breakOnError) {
+      process.exit(1);
+    }
 
   }
 

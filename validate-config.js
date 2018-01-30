@@ -31,8 +31,9 @@
       outDir: 'reports/tslint-html-report',
       json: 'tslint-report.json',
       html: 'tslint-report.html',
+      exclude: [],
       breakOnError: false,
-      tsconfig: undefined,
+      tsconfig: 'tsconfig.json',
       typeCheck: false
     }
 
@@ -50,9 +51,13 @@
       extendedConfig.outDir = config.outDir || defaultConfig.outDir;
       extendedConfig.json = defaultConfig.json;
       extendedConfig.html = config.html || defaultConfig.html;
+      extendedConfig.exclude = defaultConfig.exclude;
       extendedConfig.breakOnError = config.breakOnError;
       extendedConfig.typeCheck = config.typeCheck;
-      extendedConfig.tsconfig = config.tsconfig;
+      extendedConfig.tsconfig = config.tsconfig  || defaultConfig.tsconfig;
+      if (config.exclude) {
+        extendedConfig.exclude = Array.isArray(config.exclude) ? config.exclude : extendedConfig.exclude.push(config.exclude);
+      }
     } else {
       extendedConfig = defaultConfig;
     }

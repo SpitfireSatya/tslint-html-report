@@ -1,7 +1,7 @@
 
 # tslint-html-report
 A small module which runs TSLint on the given source glob and generates a simple HTML report.
-Works with typescrit version 2.0 and greater.
+Works with typescript version 2.0 and greater.
 
 ## Installation
 
@@ -23,7 +23,7 @@ tslintHtmlReport({/*config*/});
 
 and you're done!!
 
-##Config
+## Config
 
 The tslint-html-report takes the following config object and the default values are as below
 
@@ -31,10 +31,15 @@ The tslint-html-report takes the following config object and the default values 
 config: {
   tslint: 'node_modules/tslint-html-report/tslint.json', // path to tslint.json
   srcFiles: 'src/**/*.ts', // files to lint
-  outDir: 'reports/tslint-html-report', // output folder to write the report to.
+  outDir: 'reports/tslint-html-report', // output folder to write the report to
   html: 'tslint-report.html', // name of the html report generated
-  breakOnError: false, // Should it throw an error in tslint errors are found.
+  exclude: ['src/**/*.ts'], // Files/patterns to exclude
+  breakOnError: false, // Should it throw an error in tslint errors are found
   typeCheck: true, // enable type checking. requires tsconfig.json
   tsconfig: 'tsconfig.json' // path to tsconfig.json
 }
 ```
+
+## Sample Report
+
+![This is what the report looks like](sample.jpg?raw=true "Sample Report")
