@@ -1,7 +1,7 @@
 
 # tslint-html-report
 A small module which runs TSLint on the given source glob and generates a simple HTML report.
-Works with typescrit version 2.0 and greater.
+Works with typescript version 2.0 and greater.
 
 ## Installation
 
@@ -23,7 +23,7 @@ tslintHtmlReport({/*config*/});
 
 and you're done!!
 
-##Config
+## Config
 
 The tslint-html-report takes the following config object and the default values are as below
 
