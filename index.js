@@ -6,10 +6,14 @@
   const validateConfig = require('./validate-config');
   const generateReport = require('./generate-report');
 
-  function tslintHtmlReport(userConfig) {
+  function tslintHtmlReport(userConfig, done) {
 
     const config = validateConfig(userConfig);
-    generateReport(config);
+    generateReport(config, () => {
+      if (done) {
+        done(); 
+      }
+    });
 
   }
 

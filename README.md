@@ -17,7 +17,7 @@ Simple require the module in your script/gulp task and invoke it with the desire
 ```js
 const tslintHtmlReport = require('tslint-html-report');
 
-tslintHtmlReport({/*config*/});
+tslintHtmlReport({/*config*/}, callback);
 
 ```
 
