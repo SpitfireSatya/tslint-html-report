@@ -28,7 +28,7 @@
   "dependencies": {
     "handlebars": "^4.0.11",
     "lodash": "^4.17.4",
-    "npm-run": "^4.1.2",
+    "npm-run": "^5.0.1",
     "tslint": "^5.11.0",
     "typescript": "^2.9.2"
   }
