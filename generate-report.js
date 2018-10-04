@@ -29,7 +29,7 @@
     }
 
     if (config.typeCheck) {
-      cliArguments = cliArguments + ' --project ' + config.tsconfig
+      cliArguments = cliArguments + ' --project "' + config.tsconfig + '"';
     }
 
     console.info(funkyLogger.color('cyan', 'Generating TSlint report.'));
