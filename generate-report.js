@@ -33,7 +33,7 @@
     }
 
     console.info(funkyLogger.color('cyan', 'Generating TSlint report.'));
-    const result = npmRun.exec('tslint' + cliArguments, { cwd: __dirname }, (error, stdout, stderr) => {
+    const result = npmRun.exec('tslint' + cliArguments, { cwd: __dirname, maxBuffer: Infinity }, (error, stdout, stderr) => {
       if (error) {
         console.error(error);
       }
