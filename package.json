@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/SpitfireSatya/tslint-html-report.git"
   },
+  "resolve": {
+    "tsutils": "^3.0.0"
+  },
   "keywords": [
     "tslint-html-report",
     "tslint",
@@ -29,7 +32,8 @@
     "handlebars": "^4.0.11",
     "lodash": "^4.17.4",
     "npm-run": "^5.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "tslint": "^5.12.1",
+    "typescript": "^2.9.2",
+    "tsutils": "^3.0.0"
   }
 }
