@@ -66,7 +66,7 @@
           fileListWithErrorCountArray.push({
             name: key,
             count: fileListWithErrorCount[key],
-            details: _.filter(rawData, { name: key })
+            details: _.filter(rawData, { name: key }).map((e, i) => Object.assign(e, {index : i+1}))
           });
         });
         console.info(funkyLogger.color('green', 'Data mapping complete.'));
