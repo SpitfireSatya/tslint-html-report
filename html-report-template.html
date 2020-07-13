@@ -8,11 +8,8 @@
     <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>TSLint Report</title>
     <style>
-        .badge-success {
-            background-color: green;
-        }
         .badge-error {
-            background-color: red;
+            color: red;
         }
         .error-div span {
             font-weight: bold;
@@ -28,13 +25,13 @@
 
         <h1 class="text-center">TSLint Error Report</h1>
 
-        <h3>Total Lint Errors: <strong>{{total}}</strong></h3>
+        <h3>Total Lint Errors: <span class="badge-error"><strong>{{total}}</strong></span></h3>
 
         <div class="row error-div">
-            <span class="col-lg-2" style="margin-top: 7px;">Index</span>
-            <span class="col-lg-5" style="margin-top: 7px;">File Path</span>
-            <span class="col-lg-3" style="margin-top: 7px;">Count</span>
-            <span class="col-lg-2">Toggle</span>
+            <span class="text-center col-lg-2" style="margin-top: 7px;">Index</span>
+            <span class="text-center col-lg-5" style="margin-top: 7px;">File Path</span>
+            <span class="text-center col-lg-3" style="margin-top: 7px;">Count</span>
+            <span class="text-center col-lg-2">Toggle</span>
         </div>
 
         {{#each errors as |error|}}

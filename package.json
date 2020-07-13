@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/SpitfireSatya/tslint-html-report#readme",
   "dependencies": {
-    "handlebars": "^4.0.11",
-    "lodash": "^4.17.4",
+    "handlebars": "^4.7.6",
+    "lodash": "^4.17.19",
     "npm-run": "^5.0.1",
     "tslint": "^6.1.2",
     "tsutils": "^3.0.0",
